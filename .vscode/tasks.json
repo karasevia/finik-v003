@@ -1,0 +1,90 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "upload programm",
+            "type": "shell",
+            "command": "..\\tools\\ch32v0-uprog.exe --baud 460800 --device COM18 .\\build\\firmware.elf.bin"
+        },
+        {
+            "label": "reboot bootloader cmd",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "..\\tools\\serialsend.py",
+                "COM18",
+                "460800",
+                "command: reboot bootloader"
+            ],
+        },
+        {
+            "label": "reboot programm cmd",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "..\\tools\\serialsend.py",
+                "COM18",
+                "460800",
+                "command: reboot"
+            ],
+        },
+        {
+            "label": "read bootloader info cmd",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "..\\tools\\serialsend.py",
+                "COM18",
+                "460800",
+                "command: read bootloader info"
+            ],
+        },
+        {
+            "label": "mode 0 example cmd",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "..\\tools\\serialsend.py",
+                "COM18",
+                "460800",
+                "command: mode 0"
+            ],
+        },
+        {
+            "label": "mode 1 example cmd",
+            "type": "shell",
+            "command": "python",
+            "args": [
+                "..\\tools\\serialsend.py",
+                "COM18",
+                "460800",
+                "command: mode 1"
+            ],
+        },
+        {
+            "label": "cmake build",
+            "type": "shell",
+            "command": "cmake --build ${command:cmake.buildDirectory} --config Debug --target all",
+            "problemMatcher": "$gcc"
+        },
+        {
+            "label": "update from bootloader",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "cmake build",
+                "upload programm"
+            ]
+        },
+        {
+            "label": "update from programm",
+            "dependsOrder": "sequence",
+            "dependsOn": [
+                "cmake build",
+                "reboot bootloader cmd",
+                "upload programm"
+            ]
+        }
+    ]
+}

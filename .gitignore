@@ -1,0 +1,8 @@
+*.d
+*.o
+*.elf
+*.bin
+*.hex
+*.lst
+build/*
+compile_commands.json

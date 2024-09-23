@@ -1,0 +1,29 @@
+{
+    "makefile.extensionOutputFolder": "./.vscode",
+    "cortex-debug.openocdPath.linux": "/opt/openocd-wch/bin/openocd",
+    "cortex-debug.gdbPath.linux": "/opt/xpack-riscv-none-elf-gcc-12.2.0-1/bin/riscv-none-elf-gdb",
+    "cortex-debug.objdumpPath.linux": "/opt/xpack-riscv-none-elf-gcc-12.2.0-1/bin/riscv-none-elf-objdump",
+    "cortex-debug.openocdPath.windows": "C:\\openocd-wch\\bin\\openocd.exe", 
+    "cortex-debug.gdbPath.windows": "C:\\xPacks\\riscv-none-elf-gcc\\xpack-riscv-none-elf-gcc-12.2.0-3\\bin\\riscv-none-elf-gdb.exe",
+    "cortex-debug.objdumpPath.windows": "C:\\xPacks\\riscv-none-elf-gcc\\xpack-riscv-none-elf-gcc-12.2.0-3\\bin\\riscv-none-elf-objdump.exe",
+    "files.associations": {
+        "ch32v00x_conf.h": "c",
+        "ch32v00x_it.h": "c",
+        "core_riscv.h": "c",
+        "ch32v00x.h": "c",
+        "debug.h": "c",
+        "string.h": "c",
+        "arduino.h": "c",
+        "ch32v00x_dma.h": "c",
+        "crtdefs.h": "c"
+    },
+    "cortex-debug.registerUseNaturalFormat": false,
+    "cortex-debug.variableUseNaturalFormat": false,
+    "cmake.generator": "Ninja",
+    "cmake.configureEnvironment": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "on"
+    },
+    "C_Cpp.default.intelliSenseMode": "gcc-arm",
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools", 
+    "C_Cpp.intelliSenseEngine": "default",
+}
