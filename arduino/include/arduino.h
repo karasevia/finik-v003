@@ -35,6 +35,9 @@ void loop();
 #define D6 0xD6
 #define D7 0xD7
 
+#define Acal 0xF0 // TODO
+#define Aref 0xF1 // reference 1.20 V
+
 #define LED_BUILTIN D1
 #define BUTTON_BUILTIN A1
 

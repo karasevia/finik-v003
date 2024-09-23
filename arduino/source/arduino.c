@@ -420,9 +420,9 @@ void read_config(config_t* config) {
 uint16_t analogRead(uint8_t pin)
 {
     #ifdef USE_XTAL_PINS_AS_GPIO
-    const uint8_t analogPins[] = {A1, A2, C4, D2, D3, D4, D5, D6};
+    const uint8_t analogPins[] = {A1, A2, C4, D2, D3, D4, D5, D6, Aref};
     #else
-    const uint8_t analogPins[] = {C4, D2, D3, D4, D5, D6};
+    const uint8_t analogPins[] = {C4, D2, D3, D4, D5, D6, Aref};
     #endif // USE_XTAL_PINS_AS_GPIO
 
     u8 i;
@@ -432,7 +432,9 @@ uint16_t analogRead(uint8_t pin)
     if (i == sizeof(analogPins))
         return 0;
 
-    pinMode(pin, INPUT_ANALOG);
+    if (pin != Aref) {
+        pinMode(pin, INPUT_ANALOG);
+    }
 
     static u8 onceInit = 1;
     if (onceInit) {
@@ -461,14 +463,15 @@ uint16_t analogRead(uint8_t pin)
 
     u8 channel = ADC_Channel_0;
     switch (pin) {
-        case A2: channel = ADC_Channel_0; break;
-        case A1: channel = ADC_Channel_1; break;
-        case C4: channel = ADC_Channel_2; break;
-        case D2: channel = ADC_Channel_3; break;
-        case D3: channel = ADC_Channel_4; break;
-        case D4: channel = ADC_Channel_5; break;
-        case D5: channel = ADC_Channel_6; break;
-        case D6: channel = ADC_Channel_7; break;    
+        case A2:   channel = ADC_Channel_0; break;
+        case A1:   channel = ADC_Channel_1; break;
+        case C4:   channel = ADC_Channel_2; break;
+        case D2:   channel = ADC_Channel_3; break;
+        case D3:   channel = ADC_Channel_4; break;
+        case D5:   channel = ADC_Channel_5; break;
+        case D6:   channel = ADC_Channel_6; break;
+        case D4:   channel = ADC_Channel_7; break;
+        case Aref: channel = ADC_Channel_8; break;
         default: break;
     }
 

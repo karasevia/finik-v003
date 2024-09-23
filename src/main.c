@@ -33,8 +33,6 @@ void loop() {
 	} else {
 		delay(3000);
 	}
-
-	printf(">val:%d\r\n", analogRead(C4));
 }
 
 #ifdef UART_COMMANDS_RECEIVE_SERVICE
