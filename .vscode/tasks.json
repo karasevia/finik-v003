@@ -4,12 +4,12 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "upload programm",
+            "label": "[bin->mcu].....upload programm",
             "type": "shell",
             "command": "..\\tools\\ch32v0-uprog.exe --baud 460800 --device COM18 .\\build\\firmware.elf.bin"
         },
         {
-            "label": "reboot bootloader cmd",
+            "label": "[mcu->boot]..reboot bootloader cmd",
             "type": "shell",
             "command": "python",
             "args": [
@@ -20,7 +20,7 @@
             ],
         },
         {
-            "label": "reboot programm cmd",
+            "label": "[mcu->prog]..reboot programm cmd",
             "type": "shell",
             "command": "python",
             "args": [
@@ -31,7 +31,7 @@
             ],
         },
         {
-            "label": "read bootloader info cmd",
+            "label": "[read inf]..........read bootloader info cmd",
             "type": "shell",
             "command": "python",
             "args": [
@@ -42,7 +42,7 @@
             ],
         },
         {
-            "label": "mode 0 example cmd",
+            "label": "[mode 0]..........example cmd",
             "type": "shell",
             "command": "python",
             "args": [
@@ -53,7 +53,7 @@
             ],
         },
         {
-            "label": "mode 1 example cmd",
+            "label": "[mode 1]..........example cmd",
             "type": "shell",
             "command": "python",
             "args": [
@@ -64,13 +64,13 @@
             ],
         },
         {
-            "label": "cmake build",
+            "label": "[build]...............cmake build",
             "type": "shell",
             "command": "cmake --build ${command:cmake.buildDirectory} --config Debug --target all",
             "problemMatcher": "$gcc"
         },
         {
-            "label": "update from bootloader",
+            "label": "[flash]................update from bootloader",
             "dependsOrder": "sequence",
             "dependsOn": [
                 "cmake build",
@@ -78,7 +78,7 @@
             ]
         },
         {
-            "label": "update from programm",
+            "label": "[flash]................update from programm",
             "dependsOrder": "sequence",
             "dependsOn": [
                 "cmake build",
