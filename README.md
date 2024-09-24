@@ -35,4 +35,6 @@ This project provide a functional cmake project for ch32v003 MCU using standard 
 ## Usefull
 ![mcu_view](docs/ch32v003f4p6.svg)
 
+## TODO:
 
+ - add openocd debug
