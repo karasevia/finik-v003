@@ -46,6 +46,43 @@ This project provide a functional cmake project for ch32v003 MCU using standard 
  - switch to Run and Debug (ctrl + shift + D)
  - Debug
 
+## Configs
+
+The last two pages are used to save some information during reloading and flashing. This allows you to save up to 62 bytes.
+To use it, create an object with the structure as in the example:
+
+```c
+union config_u
+{
+    config_t raw;
+    struct
+	{
+		uint8_t mode;
+        uint8_t mac[6];
+        uint8_t ipv4[4];
+        char password[32];
+	};
+} config;
+```
+
+To read and write the settings, use the methods (if the data already matches, the memory is not overwritten):
+```c
+read_config(&config.raw);
+save_config(&config.raw);
+```
+
+To use it, just call the structure variable:
+```c
+config.mode = 3;
+if (config.ipv4[0] == 192 &&
+    config.ipv4[0] == 168 &&
+    config.ipv4[0] == 0   &&
+    config.ipv4[0] == 31 
+) {
+    compare(password, config.password);
+}
+```
+
 ## Usefull
 
 ![mcu_view](docs/ch32v003f4p6.svg)
