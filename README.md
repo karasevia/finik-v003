@@ -24,13 +24,17 @@ This project provide a functional cmake project for ch32v003 MCU using standard 
  - `code --install-extension ms-vscode.cpptools-extension-pack`
  - `code --install-extension eamodio.gitlens`
  - `code --install-extension github.vscode-pull-request-github`
+ - `code --install-extension awsxxf.serialterminal`
+ - reboot VS Code
  - Install drivers for usb-uart
- - change COM18 in `tasks.json` to you serial
  - clone this repo `git clone https://github.com/karasevia/ch32v003_arduino_vsc.git`
+ - change COM18 in `tasks.json` to you serial
 
 ## Development steps
 ![board_view](docs/board_view.PNG)
- - enjoy
+ - change code
+ - open TASK RUNNER
+ - update from programm
 
 ## Debug with OpenOCD
  - change [CMAKE_BUILD_TYPE](cmake/toolchain-ch32v00x.cmake#L47) to Debug
