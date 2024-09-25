@@ -73,17 +73,17 @@
             "label": "[flash]................update from bootloader",
             "dependsOrder": "sequence",
             "dependsOn": [
-                "cmake build",
-                "upload programm"
+                "[build]...............cmake build",
+                "[bin->mcu].....upload programm"
             ]
         },
         {
             "label": "[flash]................update from programm",
             "dependsOrder": "sequence",
             "dependsOn": [
-                "cmake build",
-                "reboot bootloader cmd",
-                "upload programm"
+                "[build]...............cmake build",
+                "[mcu->boot]..reboot bootloader cmd",
+                "[bin->mcu].....upload programm"
             ]
         }
     ]

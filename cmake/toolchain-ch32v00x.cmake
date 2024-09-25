@@ -25,11 +25,14 @@ set(CPU_FLAGS "-march=rv32ecxw -mabi=ilp32e -msmall-data-limit=0 -msave-restore 
 set(COMMON_FLAGS "-std=gnu99 -MMD")
 
 set(FLAGS_RELEASE "-Os")
+set(FLAGS_DEBUG "-Og -g3")
 
 set(CMAKE_C_FLAGS "${CPU_FLAGS} ${OPT_FLAGS} ${COMMON_FLAGS}")
 set(CMAKE_C_FLAGS_RELEASE ${FLAGS_RELEASE})
+set(CMAKE_C_FLAGS_DEBUG ${FLAGS_DEBUG})
 set(CMAKE_CXX_FLAGS "${CPU_FLAGS} ${OPT_FLAGS} ${COMMON_FLAGS} -fno-rtti -fno-exceptions")
 set(CMAKE_CXX_FLAGS_RELEASE ${FLAGS_RELEASE})
+set(CMAKE_CXX_FLAGS_DEBUG ${FLAGS_DEBUG})
 SET(CMAKE_ASM_FLAGS "${CFLAGS} ${CPU_FLAGS} -x assembler-with-cpp")
 
 set(LD_FLAGS "${CPU_FLAGS} -Xlinker -g -lprintf -nostartfiles -Wl,--gc-sections -Wl,--print-memory-usage")
@@ -41,3 +44,4 @@ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
 
 set(CMAKE_BUILD_TYPE "Release")
+# set(CMAKE_BUILD_TYPE "Debug")

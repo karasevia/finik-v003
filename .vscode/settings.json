@@ -11,16 +11,19 @@
         "ch32v00x_dma.h": "c",
         "crtdefs.h": "c"
     },
-    "cortex-debug.variableUseNaturalFormat": false,
     "cmake.generator": "Unix Makefiles",
     "cmake.configureEnvironment": {
-        "CMAKE_EXPORT_COMPILE_COMMANDS": "on",
-        "CMAKE_BUILD_TYPE": "Release"
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "on"
     },
     "cmake.configureSettings": {
-        "CMAKE_MAKE_PROGRAM": "${workspaceFolder}/../tools/build-utils/bin/make.exe"
+        "CMAKE_MAKE_PROGRAM": "${workspaceFolder}\\..\\tools\\build-utils\\bin\\make.exe"
     },
     "C_Cpp.default.intelliSenseMode": "gcc-arm",
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools", 
-    "C_Cpp.intelliSenseEngine": "default",
+    "cortex-debug.openocdPath.windows": "${workspaceFolder}\\..\\tools\\OpenOCD\\bin\\openocd.exe", 
+    "cortex-debug.gdbPath.windows": "${workspaceFolder}\\..\\tools\\riscv-embedded-gcc-12\\bin\\riscv-none-elf-gdb.exe",
+    "cortex-debug.objdumpPath.windows": "${workspaceFolder}\\..\\tools\\riscv-embedded-gcc-12\\bin\\riscv-none-elf-objdump.exe",
+    "cortex-debug.registerUseNaturalFormat": false,
+    "cortex-debug.variableUseNaturalFormat": false,
+    "C_Cpp.intelliSenseEngine": "default"
 }

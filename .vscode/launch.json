@@ -5,12 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
-             "name": "Start debug on CH32V003",
+            "name": "Debug",
             "cwd": "${workspaceFolder}",
             "executable": "${workspaceFolder}/build/firmware.elf",
             "request": "launch",
             "type": "cortex-debug",
-            "runToEntryPoint": "main",
+            "runToEntryPoint": "setup",
             "servertype": "openocd",
             "showDevDebugOutput": "raw",
             "svdFile": "${workspaceFolder}/svd/CH32V003xx.svd",
@@ -18,12 +18,12 @@
                 "${workspaceFolder}/wch/wch-riscv.cfg"
             ],
             "postLaunchCommands": [
-                "b main",
+                "b setup",
                 "set mem inaccessible-by-default off",
                 "set architecture riscv:rv32",
                 "set remotetimeout unlimited"
             ],
-            "preLaunchTask": "cmake build"
+            "preLaunchTask": "[build]...............cmake build"
         }
     ]
 }
