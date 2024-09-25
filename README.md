@@ -57,11 +57,11 @@ union config_u
     config_t raw;
     struct
 	{
-		uint8_t mode;
+        uint8_t mode;
         uint8_t mac[6];
         uint8_t ipv4[4];
         char password[32];
-	};
+    };
 } config;
 ```
 
