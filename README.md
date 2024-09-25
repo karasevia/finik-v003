@@ -33,11 +33,7 @@ This project provide a functional cmake project for ch32v003 MCU using standard 
  - enjoy
 
 ## Debug with OpenOCD
-<<<<<<< HEAD
  - change [CMAKE_BUILD_TYPE](cmake/toolchain-ch32v00x.cmake#L47) to Debug
-=======
- - change [CMAKE_BUILD_TYPE](cmake/toolchain-ch32v00x.cmake) to Debug
->>>>>>> 855a74e11b6468fdc04fecf04d59268cc54b9858
  - switch to Run and Debug (ctrl + shift + D)
  - Debug
 
