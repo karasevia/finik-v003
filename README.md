@@ -7,7 +7,7 @@
 This project provide a functional cmake project for ch32v003 MCU using standard RISC-V GCC toolchain. Programming is carried out in the Arduino or Platformio style, that is, using a usb-uart and a built-in bootloder.
 
 ## Prepare SDK steps
- - Download [toolchain](https://disk.yandex.ru/d/FtX5PrUw41lY9g) ([mirror](https://drive.google.com/file/d/182DQ3UHFmaeHobr4jvkXTgFteFnm_5XY/view?usp=sharing)) and place it in the same directory as the project folder.
+ - Download [toolchain](https://disk.yandex.ru/d/RmjCNxb3dcRByQ) ([mirror](https://drive.google.com/file/d/1hytLr7pkEfrvUR4fV7C-jODg7oK6aswY/view?usp=sharing)) and place it in the same directory as the project folder.
  - Install [cmake](https://cmake.org/download/)
  - Install [git](https://git-scm.com/downloads/win)
  - Install [python](https://www.python.org/downloads/windows/)
@@ -32,9 +32,10 @@ This project provide a functional cmake project for ch32v003 MCU using standard 
 ![board_view](docs/board_view.PNG)
  - enjoy
 
+## Debug with OpenOCD
+ - change [CMAKE_BUILD_TYPE](cmake/toolchain-ch32v00x.cmake#L47) to Debug
+ - switch to Run and Debug (ctrl + shift + D)
+ - Debug
+
 ## Usefull
 ![mcu_view](docs/ch32v003f4p6.svg)
-
-## TODO:
-
- - add openocd debug
