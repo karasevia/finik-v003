@@ -87,6 +87,6 @@ if (config.ipv4[0] == 192 &&
 
 ![mcu_view](docs/ch32v003f4p6.svg)
 
-[Data Sheet](docs\CH32V003DS0.PDF)
+[Data Sheet](docs/CH32V003DS0.PDF)
 
-[Reference Manual](docs\CH32V003RM.PDF)
+[Reference Manual](docs/CH32V003RM.PDF)
