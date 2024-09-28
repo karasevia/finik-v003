@@ -1,44 +1,49 @@
-## The project is a mix and improvement of several projects:
+# FINIK CH32V003 SDK
 
-* [ch32v307-cmake-vsc-noos-template](https://github.com/sadkotheguest/ch32v307-cmake-vsc-noos-template)
-* [arduino-wch32v003](https://github.com/AlexanderMandera/arduino-wch32v003)
+Welcome to the finik-v003 SDK repository! This SDK aims to provide a seamless and efficient development environment for the CH32V003 microcontroller, leveraging the simplicity of an Arduino-style project structure with CMake.
 
-# CH32V003 Arduino-Like project template
+## Overview
+
+The CH32V003 microcontroller is a cost-effective option for various embedded systems projects. Our SDK ensures that both novice and experienced developers can quickly get started without the need for intricate setup or deep technical knowledge.
 
 ![specifications](docs/specifications.png)
-This project provide a functional cmake project for ch32v003 MCU using standard RISC-V GCC toolchain. Programming is carried out in the Arduino or Platformio style, that is, using a usb-uart and a built-in bootloder.
 
-## Prepare SDK steps
+### Key Features
 
- - Download [toolchain](https://disk.yandex.ru/d/RmjCNxb3dcRByQ) ([mirror](https://drive.google.com/file/d/1hytLr7pkEfrvUR4fV7C-jODg7oK6aswY/view?usp=sharing)) and place it in the same directory as the project folder.
- - Install [cmake](https://cmake.org/download/)
- - Install [git](https://git-scm.com/downloads/win)
- - Install [python](https://www.python.org/downloads/windows/)
- - Install python lib `pip install pyserial`
- - Install [vscode](https://code.visualstudio.com/) and install extensions
- - `code --install-extension ms-vscode.cpptools`
- - `code --install-extension ms-vscode.cmake-tools`
- - `code --install-extension twxs.cmake`
- - `code --install-extension marus25.cortex-debug`
- - `code --install-extension dan-c-underwood.arm`
- - `code --install-extension zixuanwang.linkerscript`
- - `code --install-extension badlogicgames.serial-plotter`
- - `code --install-extension sanaajani.taskrunnercode`
- - `code --install-extension ms-vscode.cpptools-extension-pack`
- - `code --install-extension eamodio.gitlens`
- - `code --install-extension github.vscode-pull-request-github`
- - `code --install-extension awsxxf.serialterminal`
- - reboot VS Code
- - Install drivers for usb-uart
- - clone this repo `git clone https://github.com/karasevia/ch32v003_arduino_vsc.git`
- - change COM18 in [tasks.json](.vscode\tasks.json) to you serial
+- **Ease of Use**: Simple and intuitive setup process that parallels the Arduino IDE experience.
+- **CMake Integration**: Streamlined project structure managed by CMake for advanced project configurations.
+- **Comprehensive Tooling**: Essential VS Code extensions provided to enhance the development workflow.
+
+## Getting Started (Windows)
+
+To start using the SDK, follow the steps below:
+
+1. **Download toolchain**:
+	[toolchain](https://disk.yandex.ru/d/RmjCNxb3dcRByQ) ([mirror](https://drive.google.com/file/d/1hytLr7pkEfrvUR4fV7C-jODg7oK6aswY/view?usp=sharing)) and place it in the same directory as the project folder.
+2. **Insatll prerequizits**:
+   	[cmake](https://cmake.org/download/),  [git](https://git-scm.com/downloads/win), [python](https://www.python.org/downloads/windows/)
+	Install python lib `pip install pyserial` (for sending commands to mcu)
+3. **Install VS Code and extensions**:
+   	[vscode](https://code.visualstudio.com/)
+	 ```sh
+  code --install-extension ms-vscode.cpptools --install-extension ms-vscode.cmake-tools --install-extension twxs.cmake --install-extension marus25.cortex-debug --install-extension dan-c-underwood.arm --install-extension zixuanwang.linkerscript --install-extension badlogicgames.serial-plotter --install-extension sanaajani.taskrunnercode --install-extension ms-vscode.cpptools-extension-pack --install-extension eamodio.gitlens --install-extension github.vscode-pull-request-github --install-extension awsxxf.serialterminal
+```
+	reload VS Code
+4. **Install drivers for usb-uart**:
+   	most popualar you can find in toolchain folder
+5. **Clone the Repository**:
+   	right-click "Open Git Bash Here"
+   	git clone https://github.com/karasevia/finik-v003.git
+6. **Set your serial port**:
+	change `COM18` in [tasks.json](.vscode\tasks.json) to your serial
+7. **Now you are ready start development!!**
 
 ## Development steps
 
 ![board_view](docs/board_view.PNG)
- - change code
- - open TASK RUNNER
- - update from programm
+ - change delay time in the loop: [delay](src/main.c#L30)
+ - open TASK RUNNER and run `[flash] update from programm`
+ - see on your board
 
 ## Debug with OpenOCD
 
@@ -90,3 +95,7 @@ if (config.ipv4[0] == 192 &&
 [Data Sheet](docs/CH32V003DS0.PDF)
 
 [Reference Manual](docs/CH32V003RM.PDF)
+
+### The project is a mix and improvement of several projects:
+* [ch32v307-cmake-vsc-noos-template](https://github.com/sadkotheguest/ch32v307-cmake-vsc-noos-template)
+* [arduino-wch32v003](https://github.com/AlexanderMandera/arduino-wch32v003)
