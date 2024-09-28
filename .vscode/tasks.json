@@ -4,12 +4,12 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "[bin->mcu].....upload programm",
+            "label": "🔄 Upload program",
             "type": "shell",
             "command": "..\\tools\\ch32v0-uprog.exe --baud 460800 --device COM18 .\\build\\firmware.elf.bin"
         },
         {
-            "label": "[mcu->boot]..reboot bootloader cmd",
+            "label": "♻️ Reboot bootloader cmd",
             "type": "shell",
             "command": "python",
             "args": [
@@ -20,7 +20,7 @@
             ],
         },
         {
-            "label": "[mcu->prog]..reboot programm cmd",
+            "label": "🔁 Reboot program cmd",
             "type": "shell",
             "command": "python",
             "args": [
@@ -31,7 +31,7 @@
             ],
         },
         {
-            "label": "[read inf]..........read bootloader info cmd",
+            "label": "🔍 Read bootloader info cmd",
             "type": "shell",
             "command": "python",
             "args": [
@@ -42,7 +42,7 @@
             ],
         },
         {
-            "label": "[mode 0]..........example cmd",
+            "label": "⚙️ Example cmd (mode 0)",
             "type": "shell",
             "command": "python",
             "args": [
@@ -53,7 +53,7 @@
             ],
         },
         {
-            "label": "[mode 1]..........example cmd",
+            "label": "⚙️ Example cmd (mode 1)",
             "type": "shell",
             "command": "python",
             "args": [
@@ -64,26 +64,26 @@
             ],
         },
         {
-            "label": "[build]...............cmake build",
+            "label": "🔨 CMake build",
             "type": "shell",
             "command": "cmake --build ${command:cmake.buildDirectory} --config Debug --target all",
             "problemMatcher": "$gcc"
         },
         {
-            "label": "[flash]................update from bootloader",
+            "label": "🚀 Update from bootloader",
             "dependsOrder": "sequence",
             "dependsOn": [
-                "[build]...............cmake build",
-                "[bin->mcu].....upload programm"
+                "🔨 CMake build",
+                "🔄 Upload program"
             ]
         },
         {
-            "label": "[flash]................update from programm",
+            "label": "🚀 Update from program",
             "dependsOrder": "sequence",
             "dependsOn": [
-                "[build]...............cmake build",
-                "[mcu->boot]..reboot bootloader cmd",
-                "[bin->mcu].....upload programm"
+                "🔨 CMake build",
+                "♻️ Reboot bootloader cmd",
+                "🔄 Upload program"
             ]
         }
     ]
