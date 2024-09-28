@@ -35,18 +35,18 @@ To start using the SDK, follow these steps:
 3. **Install VS Code and extensions**:
    Install [VS Code](https://code.visualstudio.com/). Then, in your terminal, run:
    ```sh
-   code --install-extension ms-vscode.cpptools \
-   --install-extension ms-vscode.cmake-tools \
-   --install-extension twxs.cmake \
-   --install-extension marus25.cortex-debug \
-   --install-extension dan-c-underwood.arm \
-   --install-extension zixuanwang.linkerscript \
-   --install-extension badlogicgames.serial-plotter \
-   --install-extension sanaajani.taskrunnercode \
-   --install-extension ms-vscode.cpptools-extension-pack \
-   --install-extension eamodio.gitlens \
-   --install-extension github.vscode-pull-request-github \
-   --install-extension awsxxf.serialterminal
+   code --install-extension ms-vscode.cpptools
+   code --install-extension ms-vscode.cmake-tools
+   code --install-extension twxs.cmake
+   code --install-extension marus25.cortex-debug
+   code --install-extension dan-c-underwood.arm
+   code --install-extension zixuanwang.linkerscript
+   code --install-extension badlogicgames.serial-plotter
+   code --install-extension sanaajani.taskrunnercode
+   code --install-extension ms-vscode.cpptools-extension-pack
+   code --install-extension eamodio.gitlens
+   code --install-extension github.vscode-pull-request-github
+   code --install-extension awsxxf.serialterminal
    ```
    Reload VS Code after installation.
 
