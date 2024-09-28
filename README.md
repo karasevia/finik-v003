@@ -27,12 +27,11 @@ To start using the SDK, follow these steps:
    - [Git](https://git-scm.com/downloads/win)
    - [Python](https://www.python.org/downloads/windows/)
 
-   Install the Python library:
+   Install the Python library (This is needed to send commands to the MCU):
    ```sh
    pip install pyserial
    ```
-   (This is needed to send commands to the MCU.)
-
+  
 3. **Install VS Code and extensions**:
    Install [VS Code](https://code.visualstudio.com/). Then, in your terminal, run:
    ```sh
