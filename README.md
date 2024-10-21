@@ -44,8 +44,6 @@ To start using the SDK, follow these steps:
    code --install-extension badlogicgames.serial-plotter
    code --install-extension sanaajani.taskrunnercode
    code --install-extension ms-vscode.cpptools-extension-pack
-   code --install-extension eamodio.gitlens
-   code --install-extension github.vscode-pull-request-github
    code --install-extension awsxxf.serialterminal
    ```
    Reload VS Code after installation.
