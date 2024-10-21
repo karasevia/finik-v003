@@ -23,7 +23,7 @@
                 "set architecture riscv:rv32",
                 "set remotetimeout unlimited"
             ],
-            "preLaunchTask": "[build]...............cmake build"
+            "preLaunchTask": "🚀⚙️ OpenOCD flash"
         }
     ]
 }

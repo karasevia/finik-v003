@@ -126,3 +126,4 @@ if (config.ipv4[0] == 192 &&
 This project is based on and improves upon several existing projects:
 - [ch32v307-cmake-vsc-noos-template](https://github.com/sadkotheguest/ch32v307-cmake-vsc-noos-template)
 - [arduino-wch32v003](https://github.com/AlexanderMandera/arduino-wch32v003)
+- [ch32v003-uart-programmer](https://github.com/74th/ch32v003-uart-programmer)

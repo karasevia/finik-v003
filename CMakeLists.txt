@@ -2,14 +2,19 @@ cmake_minimum_required(VERSION 3.16)
 set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_SOURCE_DIR}/cmake/toolchain-ch32v00x.cmake)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+set(CMAKE_BUILD_TYPE "Release")
+# set(CMAKE_BUILD_TYPE "Debug")
+
 project(firmware)
 
-add_compile_definitions(USE_PROGRAMMING_PIN_AS_GPIO)
+if(${CMAKE_BUILD_TYPE} STREQUAL "Release")
+    add_compile_definitions(USE_PROGRAMMING_PIN_AS_GPIO)
+endif()
 add_compile_definitions(USE_XTAL_PINS_AS_GPIO)
 add_compile_definitions(UART_BOOT_RECEIVE_SERVICE)
 add_compile_definitions(UART_COMMANDS_RECEIVE_SERVICE)
 add_compile_definitions(USE_PC0_AS_BOOT_SOURCE)
-add_compile_definitions(FLASH_CONFIG_SECTION)
+add_compile_definitions(FLASH_CONFIG_SECTION)    
 
 set(TARGET_ELF ${PROJECT_NAME}.elf)
 add_executable(${TARGET_ELF} src/main.c)

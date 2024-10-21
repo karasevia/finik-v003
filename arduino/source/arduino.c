@@ -154,15 +154,6 @@ static void _uart_timer_start()
     TIM_SetCounter( TIM1, 0 );
 }
 
-static uint8_t _uart_timer_check()
-{
-    if (TIM_GetCounter(TIM1) > 100) {
-        _uart_timer_stop();
-        return 1;
-    }
-    return 0;
-}
-
 void _try_run_uart_command(const char* cmd)
 {
     const char prefix[] = "command: ";
@@ -199,6 +190,30 @@ void _try_run_uart_command(const char* cmd)
     }
     #endif // UART_COMMANDS_RECEIVE_SERVICE
 }
+
+static void _uart_commands_loop() {
+    static uint8_t last_dma_count = 0;
+    static uint8_t last_dma_check = 0;
+    const uint8_t timer_check_count = 5;
+
+    uint8_t current_dma_count = _get_dma_count();
+    if (current_dma_count != last_dma_count) {
+        _uart_timer_start();
+    }
+    last_dma_count = current_dma_count;
+
+    if (TIM_GetCounter(TIM1) > timer_check_count) {
+        _uart_timer_stop();
+        char command[sizeof(RxDmaBuffer) / 2] = {0};
+        if (_get_dma_string(last_dma_check, current_dma_count, sizeof(command) - 1, command) > 0) {   
+            #ifdef UART_COMMANDS_RECEIVE_SERVICE
+            printf("try_run_uart_command [%s]\r\n", command);
+            #endif // UART_COMMANDS_RECEIVE_SERVICE
+            _try_run_uart_command(command);
+        }
+        last_dma_check = current_dma_count; 
+    }
+}
 #endif // UART_COMMANDS_RECEIVE_SERVICE || UART_BOOT_RECEIVE_SERVICE
 
 int main(void)
@@ -213,32 +228,13 @@ int main(void)
     _usart_dma_init();
     USART_DMACmd(USART1, USART_DMAReq_Rx, ENABLE);
     _usart_tim_init();
-
-    uint8_t last_dma_count = _get_dma_count();
-    uint8_t last_dma_check = last_dma_count;
     #endif // UART_COMMANDS_RECEIVE_SERVICE || UART_BOOT_RECEIVE_SERVICE
 
     while(1)
     {
         loop();
-        
         #if defined(UART_COMMANDS_RECEIVE_SERVICE) || defined(UART_BOOT_RECEIVE_SERVICE)
-        uint8_t current_dma_count = _get_dma_count();
-        if (current_dma_count != last_dma_count) {
-            _uart_timer_start();
-        }
-        last_dma_count = current_dma_count;
-
-        if (_uart_timer_check()) {
-            char command[30] = {0};
-            if (_get_dma_string(last_dma_check, current_dma_count, sizeof(command) - 1, command) > 0) {   
-                #ifdef UART_COMMANDS_RECEIVE_SERVICE
-                printf("try_run_uart_command [%s]\r\n", command);
-                #endif // UART_COMMANDS_RECEIVE_SERVICE
-                _try_run_uart_command(command);
-            }
-            last_dma_check = current_dma_count; 
-        }
+        _uart_commands_loop();
         #endif // UART_COMMANDS_RECEIVE_SERVICE || UART_BOOT_RECEIVE_SERVICE
     }
 }
@@ -475,9 +471,12 @@ uint16_t analogRead(uint8_t pin)
         default: break;
     }
 
+    ADC_ClearFlag(ADC1, ADC_FLAG_EOC);
     ADC_RegularChannelConfig(ADC1, channel, 1, ADC_SampleTime_241Cycles);
     ADC_SoftwareStartConvCmd(ADC1, ENABLE);
     while(!ADC_GetFlagStatus(ADC1, ADC_FLAG_EOC));
+    uint16_t result = ADC_GetConversionValue(ADC1);
+    ADC_SoftwareStartConvCmd(ADC1, DISABLE);
 
-    return ADC_GetConversionValue(ADC1);
+    return result;
 }

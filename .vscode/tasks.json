@@ -66,7 +66,7 @@
         {
             "label": "🔨 CMake build",
             "type": "shell",
-            "command": "cmake --build ${command:cmake.buildDirectory} --config Debug --target all",
+            "command": "cmake --build ${command:cmake.buildDirectory} --target all",
             "problemMatcher": "$gcc"
         },
         {
@@ -85,6 +85,23 @@
                 "♻️ Reboot bootloader cmd",
                 "🔄 Upload program"
             ]
-        }
+        },
+        {
+            "label": "🚀⚙️ OpenOCD flash",
+            "type": "shell",
+            "options": {
+                "env": {
+                    "ELF_NAME": "${command:cmake.getLaunchTargetPath}"
+                }
+            },
+            "windows": {
+                "command": "${config:cortex-debug.openocdPath.windows}"
+            },
+            "args": [
+                "-f${workspaceFolder}/wch/wch-riscv.cfg",
+                "-f${workspaceFolder}/wch/wch-program.cfg"
+            ],
+            "dependsOn": "🔨 CMake build"
+        },
     ]
 }

@@ -24,6 +24,6 @@
     "cortex-debug.gdbPath.windows": "${workspaceFolder}\\..\\tools\\riscv-embedded-gcc-12\\bin\\riscv-none-elf-gdb.exe",
     "cortex-debug.objdumpPath.windows": "${workspaceFolder}\\..\\tools\\riscv-embedded-gcc-12\\bin\\riscv-none-elf-objdump.exe",
     "cortex-debug.registerUseNaturalFormat": false,
-    "cortex-debug.variableUseNaturalFormat": false,
+    "cortex-debug.variableUseNaturalFormat": true,
     "C_Cpp.intelliSenseEngine": "default"
 }
